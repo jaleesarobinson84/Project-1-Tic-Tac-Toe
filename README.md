@@ -3,4 +3,4 @@ tables
  click the cards
  response
  music
- tracking score
+ win lose conditions
