@@ -1,5 +1,7 @@
 const board = document.getElementbyId('.button-select')
 let restartBtn = document.getElementbyId('restart')
+const players = ['X', 'O']
+let currentPlayer = players[0]
 
 let winningPattern = [
     [0, 1, 2],

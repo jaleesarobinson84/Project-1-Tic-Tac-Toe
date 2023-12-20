@@ -7,8 +7,13 @@
 
 body {
     height: 100vh;
-    background: linear-gradient(135deg, #d99c3a, #0066ff);
+    background: linear-gradient(135deg, #2199d9, hwb(264 3% 20%));
 }
+
+h1 {
+    text-align: justify;
+}
+
 
 .wrap {
 display:flex;
@@ -38,17 +43,27 @@ display:flex;
     color: aliceblue;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
-#restart {
-    font-size: 1em;
-    padding: 1em;
-    border-radius: 8px;
-    background-color: aqua;
-    color: black;
-    border: none;
-    position:fixed;
-    margin: 1.5em auto 0 auto;
-    display: block;
+
+.button-select:hover {
+    background-color: azure;
 }
+
+#restart {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    width: 150px;
+    background-color: #33cc33;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+#restart:hover {
+    background-color: azure;
+}
+
 
 
 
