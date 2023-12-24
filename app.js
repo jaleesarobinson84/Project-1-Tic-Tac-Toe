@@ -1,82 +1,71 @@
-const board = document.getElementById('button-select')
-let newGameBtn = document.getElementById('new-game')
-let restartBtn = document.getElementById('restart')
-const players = ['X', 'O']
-let currentPlayer = players[0]
-const winningMessage = document.getElementById('winningMessage')
-const winningMessageTextElement = document.getElementById('winningMessageText')
+let playerText = document.getElementById('playerText')
+let restartBtn = document.getElementById('restartBtn')
+let board = Array.from(document.getElementsByClassName('button'))
 
-// Winning Pattern
-let winningPattern = [
-    [0, 1, 2],
-    [0, 3, 6],
-    [2, 5, 8],
-    [6, 7, 8],
-    [3, 4, 5],
-    [1, 4, 7],
-    [0, 4, 8],
-    [2, 4, 6]
-];
+const TEXT_x = "x"
+const TEXT_o = "o"
+let currentPlayer = TEXT_x
+let spaces = Array(9).fill(null)
 
-// Player 'X' goes first
-let xTurn = true;
-let count = 0;
-
-// Button Disable All (start and restart)
-const disableButtons = () => {
-    btnRef.forEach(element => (element.disabled = true)); {
-        // popup enabled
-        popupRef.classList.remove('hide');
-    };
-
-    // enable all buttons (for new game and restart)
-const enableButtons = () => {
-    board.forEach((element) => {
-        element.innerText = "";
-        element.disabled = false;
-    });
-    // popup disabled
-    popupRef.classList.add('hide');
-};
+const startGame = () => {
+    board.forEach(button => button.addEventListener('click', buttonclicked))
 }
 
-// New Game
-newGameBtn.addEventListener('click', () => {
-    count = 0
-    enableButtons();
-});
+function buttonclicked(e) {
+   const button = e.target.button
 
-restartBtn.addEventListener('click', () => {
-    count = 0
-    enableButtons();
-});
+   if(!spaces[button]) {
+    spaces[button] = currentPlayer
+    e.target.innerText = currentPlayer
 
+    if(playerWon() !==false) {
+        playerText = `${currentPlayer} has won!`
+        
+    }
 
-// Display X/O with click
-board.forEach((element) => {
-    element.addEventListener('click', () => {
-        if (xTurn) {
-            xTurn = false;
-            // Display X
-            element.innerText = "X";
-            element.disabled = true;
-        } else {
-            xTurn = true;
-            // Display O
-            element.innerText = "O";
-            element.disabled = true;
+    currentPlayer = currentPlayer == TEXT_x ? TEXT_o : TEXT_x
+   }
+}
+
+const winningPattern = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [2,4,6]
+]
+
+function playerWon() {
+    for(const condition of winningPattern) {
+        let [a, b, c] = condition
+    
+        if(spaces[a] && (spaces[a] == spaces[b] && spaces[a] == spaces[c])) {
+            return[a,b,c]
         }
-        count += 1;
-        if (count == 9) {
-            drawFunction();
-        }
-        // each click check for win
-        winChecker();
-    });
-});
+    }
+return false
+}
+
+restartBtn.addEventListener('click', restart)
+
+function restart() {
+    spaces.fill(null)
+
+    board.forEach( button => {
+        button.innerText = ''
+    })
+
+    playerText = 'Tic Tac Toe'
+    
+    currentPlayer = TEXT_x
+
+}
+
+startGame()
 
 
 
 
-
-window.onload = enableButtons;

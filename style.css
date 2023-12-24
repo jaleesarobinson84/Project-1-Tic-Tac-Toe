@@ -33,7 +33,7 @@ display:flex;
 
 }
 
-.button-select {
+.button {
     background: #33cc33;
     height: 80px;
     width: 80px;
@@ -44,29 +44,10 @@ display:flex;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-.button-select:hover {
+.button:hover {
     background-color: azure;
 }
 
-/* .winning-message {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row-reverse;
-    font-size: 18px;
-}
-
-#winning-message button {
-    border-radius: 10px;
-    font-size: 15px;
-    background-color: #33cc33;
-    border: none; */
-/* } */
 
 #restart {
     display: block;
@@ -86,21 +67,6 @@ display:flex;
     background-color: azure;
 }
 
-#new-game {
-    display: block;
-    margin: auto;
-    margin-right: auto;
-    height: 40px;
-    width: 150px;
-    background-color: #33cc33;
-    border: none;
-    border-radius: 8px;
-    align-items: center;
-}
-
-#new-game:hover {
-    background-color: azure;
-}
 
 
 
