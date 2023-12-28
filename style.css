@@ -16,6 +16,9 @@ h1 {
     text-align: center;
 }
 
+html {
+    font-size: 16px;
+}
 
 .wrap {
 display:flex;
@@ -26,11 +29,12 @@ display:flex;
     margin-top: 0.7em;
     margin-left: auto;
     margin-right: auto;
-    width: 250px;
-    height: 250px;
+    width: 275px;
+    height: 275px;
     display: grid;
     grid-template-columns: repeat(3, auto);
-    grid-gap: 5px;
+    grid-gap: 8px;
+    font-size: 5px;
 
     
 
@@ -60,7 +64,7 @@ display:flex;
     margin-right: auto;
     height: 20px;
     width: 100px;
-    background-color: #33cc33;
+    background-color: #43cf54;
     border: none;
     border-radius: 8px;
     font-size: 18px;
@@ -69,9 +73,27 @@ display:flex;
 }
 
 #restartBtn:hover {
-    background-color: azure;
+    background-color: rgb(240, 255, 242);
 }
 
+.x {
+    color: purple;
+    font-size: 10px;
+}
+
+.o {
+    color: purple;
+    font-size: 10px;
+}
+.x-hover:hover::after {
+    content: 'X';
+  
+}
+
+.o-hover:hover::after {
+    content: 'O';
+   
+}
 
 
 
