@@ -1,10 +1,10 @@
+let board = Array.from(document.querySelectorAll('.button'))
 let playerText = document.getElementById('playerText')
-let restartBtn = document.getElementById('restartBtn')
-let board = Array.from(document.getElementsByClassName('button'))
+let restartBtn = document.querySelector('#restartBtn')
 
-const TEXT_x = "x"
-const TEXT_o = "o"
-let currentPlayer = TEXT_x
+const playerX = "x"
+const playerO = "o"
+let currentPlayer = playerX
 let spaces = Array(9).fill(null)
 
 const startGame = () => {
@@ -23,7 +23,7 @@ function buttonclicked(e) {
         
     }
 
-    currentPlayer = currentPlayer == TEXT_x ? TEXT_o : TEXT_x
+    currentPlayer = currentPlayer == playerX ? playerO : playerX
    }
 }
 
@@ -60,12 +60,8 @@ function restart() {
 
     playerText = 'Tic Tac Toe'
     
-    currentPlayer = TEXT_x
-
+    currentPlayer = playerX
 }
 
 startGame()
-
-
-
 

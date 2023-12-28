@@ -3,15 +3,17 @@
     margin: 0;
     box-sizing: border-box;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    justify-content: center;
 }
 
 body {
     height: 100vh;
     background: linear-gradient(135deg, #2199d9, hwb(264 3% 20%));
+    justify-content: center;
 }
 
 h1 {
-    text-align: justify;
+    text-align: center;
 }
 
 
@@ -21,6 +23,7 @@ display:flex;
 }
 
 .board {
+    margin-top: 0.7em;
     margin-left: auto;
     margin-right: auto;
     width: 250px;
@@ -42,19 +45,21 @@ display:flex;
     font-size: 12em;
     color: aliceblue;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    opacity: 1.0;
 }
 
 .button:hover {
     background-color: azure;
+    opacity: 0.5;
 }
 
 
-#restart {
+#restartBtn {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 40px;
-    width: 150px;
+    height: 20px;
+    width: 100px;
     background-color: #33cc33;
     border: none;
     border-radius: 8px;
@@ -63,7 +68,7 @@ display:flex;
 
 }
 
-#restart:hover {
+#restartBtn:hover {
     background-color: azure;
 }
 
