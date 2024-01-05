@@ -1,4 +1,4 @@
-const board = document.querySelectorAll("button");
+const board = document.querySelectorAll("button")
 const restartBtn = document.querySelector("restart")
 const resultBox = document.querySelector(".result-box")
 const wonText = resultBox.querySelector("won-text")
@@ -14,49 +14,59 @@ let winningCombo = [
     [2, 4, 6],
   ];
 
-let playerX = true;
-let count = 0;
+let currentPlayer = "X";
+let count = 0
 
-
-
-const winChecker = () => {
-
-    for (let i of winningCombo) {
-      let [element1, element2, element3] = [
-        board[i[0]].innerText,
-        board[i[1]].innerText,
-        board[i[2]].innerText,
-      ];
-       
-    if (element1 != "" && (element2 != "") & (element3 != "")) {
-        if (element1 == element2 && element2 == element3) {
-          
-          winFunction(element1);
-        }
-      }
-    }
-  };
-  board.forEach((element) => {
-    element.addEventListener("click", () => {
-      if (playerX) {
-        playerX = false;
-        
-        element.innerText = "X";
-        element.disabled = true;
-      } else {
-        playerX = true;
-        
-        element.innerText = "O";
-        element.disabled = true;
-      }
-      
-      count += 1;
-      if (count == 9) {
-        drawFunction();
-      }
-      
-      winChecker();
-    });
+// New Game
+function boardReset() {
+  board.forEach(board => {
+    board.textContent = "";
   });
+  currentPlayer = "X";
+  updateGame();
+}
+
+// Win Logic
+function checkWin() {
+  // all win patterns loop
+  for (let pattern of winningCombo) {
+    const [a, b, c] = pattern;
+    if (board[a] !== '' && board[a] === board[b] && board[b] === board[c]) {
+      winner = board[a];
+      break;
+    }
+  }
+    return null;
+}
+
+// Check for Winner
+const winner = checkWin();
+if (winner) {
+
+}
+
+// X or O Display
+board.forEach(board => {
+  board.addEventListener('click', () => {
+      if (board.textContent === '') {
+          board.textContent = currentPlayer;
+          currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      }
+    count += 1;
+    if (count == 9) {
+      drawFunction ();
+    }
+    checkWin();
+  });
+});
+
+
+
+
+
+
+
+
+
 
 

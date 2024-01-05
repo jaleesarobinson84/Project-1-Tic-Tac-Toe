@@ -55,8 +55,8 @@ display:flex;
 .result-box {
     background-color: #33cc33;
     position: absolute;
-    margin-top: 20%;
-    margin-bottom: 20%;
+    margin-top: 300px;
+    margin-bottom: 200px;
     border: none;
     border-radius: 800px;
     padding: 0.7%;
@@ -80,8 +80,8 @@ display:flex;
 #restart {
     background-color: #33cc33;
     position: absolute;
-    margin-top: 400px;
-    margin-bottom: 400px;
+    margin-top: 375px;
+    margin-bottom: 450px;
     justify-content: center;
     border: none;
     border-radius: 800px;
