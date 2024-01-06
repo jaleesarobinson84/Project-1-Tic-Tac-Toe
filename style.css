@@ -31,6 +31,8 @@ display:flex;
     grid-template-columns: repeat(3, auto);
     grid-gap: 8px;
     font-size: 5px;
+    position: absolute;
+   
 
     
 
@@ -46,6 +48,7 @@ display:flex;
     color: aliceblue;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     opacity: 1.0;
+    
 }
 
 .button:hover {
@@ -73,23 +76,17 @@ display:flex;
 }
 
 
-/* .result-box .btn {
-    display: flex;
-    margin-top: 20px;
-   justify-content: center;
-} */
-
 #restart {
-    background-color: #33cc33;
-    position: absolute;
-    margin-top: 375px;
-    margin-bottom: 450px;
+    background-color: rgb(176, 48, 176);
+    position: relative;
     justify-content: center;
+    margin-top: 300px;
+    margin-bottom: 200px;
+    padding: 0.9;
     border: none;
-    border-radius: 800px;
-    padding: 0.6%;
-    font-size: 16px;
-    display: block;
+    border-radius: 100px;
+    font-size: 25px;
+
 }
 
 #restart:hover {
