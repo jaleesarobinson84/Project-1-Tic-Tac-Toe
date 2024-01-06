@@ -1,7 +1,7 @@
-const board = document.querySelectorAll("button")
-const restartBtn = document.querySelector("restart")
-const resultBox = document.querySelector(".result-box")
-const wonText = resultBox.querySelector("won-text")
+const board = document.querySelectorAll("button");
+const restartBtn = document.querySelector("restart");
+const resultBox = document.getElementById(".result-box");
+const winnerMessage = document.getElementById("winnerMessage")
 
 let winningCombo = [
     [0, 1, 2],
@@ -17,33 +17,43 @@ let winningCombo = [
 let currentPlayer = "X";
 let count = 0
 
+// function executed when a player won
+function showPopUp (winner) {
+  winnerMessage.textContent = `Player $(winner) WINS!!!`;
+
+  resultBox.style.display = `flex`
+}
+
 // New Game
-function boardReset() {
-  board.forEach(board => {
-    board.textContent = "";
-  });
-  currentPlayer = "X";
-  updateGame();
+function GameRestart() {
+  restartBtn.addEventListener('click', () =>{
+    count = 0;
+    enableButton();
+    resultBox.style.display = `none`;
+  })
 }
 
 // Win Logic
-function checkWin() {
-  // all win patterns loop
-  for (let pattern of winningCombo) {
-    const [a, b, c] = pattern;
-    if (board[a] !== '' && board[a] === board[b] && board[b] === board[c]) {
-      winner = board[a];
-      break;
+const checkWin = () => {
+  //Loop all win patterns
+  for (let i of winningCombo) {
+    let [element1, element2, element3] = [
+      board[i[0]].innerText,
+      board[i[1]].innerText,
+      board[i[2]].innerText,
+    ];
+  
+    //If 3 empty elements are same give the win
+    if (element1 != "" && (element2 != "") & (element3 != "")) {
+      if (element1 == element2 && element2 == element3) {
+        //If all 3 buttons have same values then pass through
+        wonGame(element1);
+      }
     }
   }
-    return null;
-}
+};
 
-// Check for Winner
-const winner = checkWin();
-if (winner) {
 
-}
 
 // X or O Display
 board.forEach(board => {
@@ -54,11 +64,12 @@ board.forEach(board => {
       }
     count += 1;
     if (count == 9) {
-      drawFunction ();
+      drawGame ();
     }
     checkWin();
   });
 });
+
 
 
 
