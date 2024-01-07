@@ -1,6 +1,6 @@
 const board = document.querySelectorAll("button");
-const restartBtn = document.querySelector("restart");
-const resultBox = document.getElementById(".result-box");
+const restartBtn = document.getElementById("restart");
+const resultBox = document.querySelector(".result-box");
 const winnerMessage = document.getElementById("winnerMessage")
 
 let winningCombo = [
@@ -18,21 +18,24 @@ let currentPlayer = "X";
 let count = 0
 
 // function executed when a player won
-function showPopUp (winner) {
-  winnerMessage.textContent = `Player $(winner) WINS!!!`;
+function showPopUp(winner) {
+  if (winner === 'draw') {
+    winnerMessage.textContent = 'It\'s a draw!';
+  } else {
+    winnerMessage.textContent = `Player ${winner} WINS!!!`;
+  }
 
-  resultBox.style.display = `flex`
+  resultBox.style.display = 'flex';
 }
 
 // New Game
 function GameRestart() {
   restartBtn.addEventListener('click', () =>{
     count = 0;
-    enableButton();
+    resetBoard();
     resultBox.style.display = `none`;
-  })
+  });
 }
-
 // Win Logic
 const checkWin = () => {
   for (let combo of winningCombo) {
@@ -45,26 +48,25 @@ const checkWin = () => {
     //If 3 empty elements are same give the win
     if (element1 !== "" && element1 === element2 && element2 === element3) {
       // If all three buttons have the same values, it's a win
-      wonGame(element1);
+      showPopUp(element1);
       return; // Exit the loop since the game is won
     }
   }
-}
+
+  if (count === 9) {
+    showPopUp("draw");
+  }
+};
 
 
 // X or O Display
 board.forEach(board => {
   board.addEventListener('click', () => {
-      if (board.textContent === '') {
-          board.textContent = currentPlayer;
-          currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-          count += 1;
-          checkWin();
-      }
-   
-    if (count === 9) {
-      wonGame("draw");
+    if (board.textContent === '') {
+      board.textContent = currentPlayer;
+      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      count += 1;
+      checkWin(); // Check for win or draw after each move
     }
-   
   });
 });
