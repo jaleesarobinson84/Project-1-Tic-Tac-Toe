@@ -35,24 +35,21 @@ function GameRestart() {
 
 // Win Logic
 const checkWin = () => {
-  //Loop all win patterns
-  for (let i of winningCombo) {
+  for (let combo of winningCombo) {
     let [element1, element2, element3] = [
-      board[i[0]].innerText,
-      board[i[1]].innerText,
-      board[i[2]].innerText,
+      board[combo[0]].textContent,
+      board[combo[1]].textContent,
+      board[combo[2]].textContent,
     ];
   
     //If 3 empty elements are same give the win
-    if (element1 != "" && (element2 != "") & (element3 != "")) {
-      if (element1 == element2 && element2 == element3) {
-        //If all 3 buttons have same values then pass through
-        wonGame(element1);
-      }
+    if (element1 !== "" && element1 === element2 && element2 === element3) {
+      // If all three buttons have the same values, it's a win
+      wonGame(element1);
+      return; // Exit the loop since the game is won
     }
   }
-};
-
+}
 
 
 // X or O Display
@@ -61,23 +58,13 @@ board.forEach(board => {
       if (board.textContent === '') {
           board.textContent = currentPlayer;
           currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+          count += 1;
+          checkWin();
       }
-    count += 1;
-    if (count == 9) {
-      drawGame ();
+   
+    if (count === 9) {
+      wonGame("draw");
     }
-    checkWin();
+   
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-

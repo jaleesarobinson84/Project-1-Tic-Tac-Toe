@@ -55,28 +55,7 @@ display:flex;
     background-color: rgb(116, 43, 189);
 }
 
-.result-box {
-    background-color: #33cc33;
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-   
-
-}
-
-.result-box-content {
-   background-color: #33cc33;
-   padding: 20px;
-   text-align: center;
-}
-
-
-#restart {
+.restart {
     background-color: rgb(176, 48, 176);
     position: relative;
     justify-content: center;
@@ -89,15 +68,9 @@ display:flex;
 
 }
 
-#restart:hover {
+.restart:hover {
     background-color: azure;
 }
-
-
-
-
-
-
 
 
 
