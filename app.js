@@ -1,6 +1,6 @@
 const board = document.querySelectorAll("button");
 const restartBtn = document.getElementById("restart");
-const resultBox = document.querySelector(".result-box");
+const winnerPop = document.getElementById("winner-popup");
 const winnerMessage = document.getElementById("winnerMessage")
 
 let winningCombo = [
@@ -15,27 +15,18 @@ let winningCombo = [
   ];
 
 let currentPlayer = "X";
-let count = 0
+let count = 0;
 
-// function executed when a player won
 function showPopUp(winner) {
-  if (winner === 'draw') {
-    winnerMessage.textContent = 'It\'s a draw!';
+  winnerPop.style.display = "flex";
+  if (winner === "draw") {
+    winnerMessage.innerText = "It's a Draw!";
   } else {
-    winnerMessage.textContent = `Player ${winner} WINS!!!`;
+    winnerMessage.innerText = `Player ${winner} wins!`;
   }
-
-  resultBox.style.display = 'flex';
 }
 
-// New Game
-function GameRestart() {
-  restartBtn.addEventListener('click', () =>{
-    count = 0;
-    resetBoard();
-    resultBox.style.display = `none`;
-  });
-}
+
 // Win Logic
 const checkWin = () => {
   for (let combo of winningCombo) {
@@ -58,6 +49,15 @@ const checkWin = () => {
   }
 };
 
+function resetBoard() {
+  board.forEach((button) => {
+    button.textContent = "";
+  });
+  winnerPop.style.display = "none";
+  count = 0;
+  currentPlayer = "X";
+}
+
 
 // X or O Display
 board.forEach(board => {
@@ -70,3 +70,6 @@ board.forEach(board => {
     }
   });
 });
+
+restartBtn.addEventListener("click", resetBoard);
+
