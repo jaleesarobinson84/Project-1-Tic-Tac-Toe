@@ -1,0 +1,20 @@
+// mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin transition($property, $duration: $transition-speed) {
+    transition: $property $duration ease-in-out;
+}
+
+@mixin button-styles($bg-color, $font-size) {
+    background: $bg-color;
+    border: none;
+    border-radius: $border-radius;
+    font-size: $font-size;
+    color: $font-color;
+    box-shadow: $box-shadow;
+    @include transition(background-color);
+}

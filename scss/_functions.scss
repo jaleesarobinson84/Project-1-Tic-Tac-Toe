@@ -1,0 +1,12 @@
+// functions
+@function em($pixels, $base: 16) {
+    @return #{$pixels / $base}em;
+}
+
+@function lighten($color, $percent) {
+    @return mix(white, $color, $percent)
+}
+
+@function darken($color, $percent) {
+    @return mix(black, $color, $percent)
+}
