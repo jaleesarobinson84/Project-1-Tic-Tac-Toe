@@ -1,0 +1,88 @@
+// Imports
+@import 'variables';
+@import 'mixins';
+@import 'functions';
+@import 'main';
+
+// Additional styles
+h1 {
+  text-align: center;
+}
+
+.content {
+  @include flex-center;
+}
+
+.board {
+  margin-top: 0.7em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 275px;
+  height: 275px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 8px;
+  font-size: 5px;
+  position: absolute;
+
+  .button {
+    @include button-styles($secondary-color, $large-font-size);
+    height: 80px;
+    width: 80px;
+    opacity: 1.0;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}
+
+.restart {
+  @include button-styles($restart-color, $medium-font-size);
+  position: relative;
+  margin-top: 300px;
+  margin-bottom: 200px;
+  padding: $padding;
+  border-radius: 100px;
+
+  &:hover {
+    background-color: azure;
+  }
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $background-overlay;
+  @include flex-center;
+
+  &-content {
+    background-color: $accent-color;
+    border: none;
+    border-radius: 10px;
+    padding: $padding;
+    text-align: center;
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: $padding em(20);
+      font-size: $small-font-size;
+      cursor: pointer;
+    }
+  }
+}
+
+// Error handling directive for unknown color
+@mixin set-background-color($color) {
+ background-color: $color;
+}
+
+// Example usage of error handling directive
+.example {
+  @include set-background-color($primary-color);
+}
